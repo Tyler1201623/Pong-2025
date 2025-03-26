@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PONG EXTREME 2025</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="game-wrapper">
+      <!-- Particle Canvas (Background) -->
+      <canvas id="particle-canvas" class="particle-layer"></canvas>
+
+      <!-- Main Menu -->
+      <div id="main-menu" class="menu-screen active">
+        <h1 class="game-title">PONG <span class="highlight">EXTREME</span></h1>
+        <div class="game-tagline">THE ULTIMATE EXPERIENCE</div>
+        <div class="menu-buttons">
+          <button id="play-btn" class="menu-button">
+            <i class="fas fa-play"></i> PLAY GAME
+          </button>
+          <button id="modes-btn" class="menu-button">
+            <i class="fas fa-dice"></i> GAME MODES
+          </button>
+          <button id="options-btn" class="menu-button">
+            <i class="fas fa-cog"></i> OPTIONS
+          </button>
+          <button id="credits-btn" class="menu-button">
+            <i class="fas fa-info-circle"></i> CREDITS
+          </button>
+        </div>
+        <div class="game-version">v2.0 EXTREME EDITION</div>
+      </div>
+
+      <!-- Game Modes Menu -->
+      <div id="modes-menu" class="menu-screen">
+        <h2>GAME MODES</h2>
+        <div class="modes-container">
+          <div class="mode-item" data-mode="classic">
+            <div class="mode-icon">
+              <i class="fas fa-table-tennis-paddle-ball"></i>
+            </div>
+            <div class="mode-details">
+              <h3>CLASSIC</h3>
+              <p>The original Pong experience</p>
+            </div>
+          </div>
+          <div class="mode-item" data-mode="chaos">
+            <div class="mode-icon"><i class="fas fa-bolt"></i></div>
+            <div class="mode-details">
+              <h3>CHAOS</h3>
+              <p>Random events and obstacles</p>
+            </div>
+          </div>
+          <div class="mode-item" data-mode="speed">
+            <div class="mode-icon"><i class="fas fa-tachometer-alt"></i></div>
+            <div class="mode-details">
+              <h3>SPEED DEMON</h3>
+              <p>Ball constantly accelerates</p>
+            </div>
+          </div>
+          <div class="mode-item" data-mode="multi">
+            <div class="mode-icon"><i class="fas fa-meteor"></i></div>
+            <div class="mode-details">
+              <h3>MULTIBALL</h3>
+              <p>Multiple balls in play</p>
+            </div>
+          </div>
+        </div>
+        <button id="modes-back" class="back-button">
+          <i class="fas fa-arrow-left"></i> BACK
+        </button>
+      </div>
+
+      <!-- Options Menu -->
+      <div id="options-menu" class="menu-screen">
+        <h2>OPTIONS</h2>
+        <div class="options-container">
+          <div class="option-item">
+            <span>Game Speed:</span>
+            <div class="slider-container">
+              <input
+                type="range"
+                id="speed-slider"
+                min="1"
+                max="5"
+                value="2"
+                class="slider"
+              />
+              <span id="speed-value">Normal</span>
+            </div>
+          </div>
+          <div class="option-item">
+            <span>Sound Effects:</span>
+            <label class="toggle">
+              <input type="checkbox" id="sound-toggle" checked />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="option-item">
+            <span>Music:</span>
+            <label class="toggle">
+              <input type="checkbox" id="music-toggle" checked />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="option-item">
+            <span>Win Score:</span>
+            <div class="number-selector">
+              <button id="score-decrease">-</button>
+              <span id="win-score">5</span>
+              <button id="score-increase">+</button>
+            </div>
+          </div>
+          <div class="option-item">
+            <span>Visual Effects:</span>
+            <label class="toggle">
+              <input type="checkbox" id="effects-toggle" checked />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="option-item">
+            <span>Power-ups:</span>
+            <label class="toggle">
+              <input type="checkbox" id="powerups-toggle" checked />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="option-item">
+            <span>AI Difficulty:</span>
+            <div class="slider-container">
+              <input
+                type="range"
+                id="ai-slider"
+                min="1"
+                max="5"
+                value="3"
+                class="slider"
+              />
+              <span id="ai-value">Normal</span>
+            </div>
+          </div>
+        </div>
+        <button id="options-back" class="back-button">
+          <i class="fas fa-arrow-left"></i> BACK
+        </button>
+      </div>
+
+      <!-- Credits Screen -->
+      <div id="credits-menu" class="menu-screen">
+        <h2>CREDITS</h2>
+        <div class="credits-content">
+          <p class="credits-title">PONG EXTREME 2025</p>
+          <p>The ultimate modernized version of the classic game</p>
+          <p>Created for [User]</p>
+          <div class="credits-section">
+            <h3>AUDIO</h3>
+            <p>Sound FX: Freesound.org</p>
+            <p>Music: Generated with AI</p>
+          </div>
+          <div class="credits-section">
+            <h3>VISUALS</h3>
+            <p>Font: Google Fonts - Orbitron</p>
+            <p>Icons: Font Awesome</p>
+            <p>Particle Effects: Custom WebGL</p>
+          </div>
+          <div class="credits-section">
+            <h3>TECHNOLOGIES</h3>
+            <p>HTML5 Canvas</p>
+            <p>Advanced JavaScript</p>
+            <p>CSS3 Animations</p>
+          </div>
+        </div>
+        <button id="credits-back" class="back-button">
+          <i class="fas fa-arrow-left"></i> BACK
+        </button>
+      </div>
+
+      <!-- Game Screen -->
+      <div id="game-screen" class="menu-screen">
+        <div class="game-ui">
+          <div class="top-bar">
+            <div class="powerup-indicators" id="powerup-indicators-p1">
+              <!-- Powerup indicators will be added here dynamically -->
+            </div>
+            <div class="score-board">
+              <div class="player-info">
+                <span class="player-label">PLAYER 1</span>
+                <div id="player1-score" class="score">0</div>
+              </div>
+              <div class="game-stats">
+                <div class="timer" id="game-timer">00:00</div>
+                <div class="rally-counter" id="rally-counter">RALLY: 0</div>
+              </div>
+              <div class="player-info">
+                <span class="player-label">PLAYER 2</span>
+                <div id="player2-score" class="score">0</div>
+              </div>
+            </div>
+            <div class="powerup-indicators" id="powerup-indicators-p2">
+              <!-- Powerup indicators will be added here dynamically -->
+            </div>
+          </div>
+
+          <div class="game-area">
+            <div id="powerup-container" class="powerup-container">
+              <!-- Powerups will be added here dynamically -->
+            </div>
+            <canvas id="pong-canvas"></canvas>
+            <div id="message-display" class="message-display"></div>
+          </div>
+
+          <div class="bottom-bar">
+            <div class="control-item">
+              <span>W/S</span>
+              <span>Player 1</span>
+              <div class="special-meter" id="special-meter-p1">
+                <div class="special-fill"></div>
+              </div>
+              <div class="special-ready" id="special-ready-p1">
+                SPECIAL READY!
+              </div>
+            </div>
+            <div class="game-controls">
+              <div class="pause-btn" id="pause-btn">
+                <i class="fas fa-pause"></i>
+              </div>
+              <div class="mode-indicator" id="mode-indicator">CLASSIC</div>
+            </div>
+            <div class="control-item">
+              <span>↑/↓</span>
+              <span>Player 2</span>
+              <div class="special-meter" id="special-meter-p2">
+                <div class="special-fill"></div>
+              </div>
+              <div class="special-ready" id="special-ready-p2">
+                SPECIAL READY!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pause Menu -->
+      <div id="pause-menu" class="menu-screen">
+        <div class="pause-content">
+          <h2>PAUSED</h2>
+          <div class="menu-buttons">
+            <button id="resume-btn" class="menu-button">
+              <i class="fas fa-play"></i> RESUME
+            </button>
+            <button id="restart-btn" class="menu-button">
+              <i class="fas fa-redo"></i> RESTART
+            </button>
+            <button id="settings-btn" class="menu-button">
+              <i class="fas fa-sliders-h"></i> SETTINGS
+            </button>
+            <button id="quit-btn" class="menu-button">
+              <i class="fas fa-home"></i> MAIN MENU
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Game Over Screen -->
+      <div id="game-over" class="menu-screen">
+        <h2>GAME OVER</h2>
+        <div id="winner-display" class="winner-info">PLAYER 1 WINS!</div>
+
+        <div class="stats-container">
+          <div class="final-scores">
+            <div class="final-score-item">
+              <span>PLAYER 1</span>
+              <span id="final-score-p1">0</span>
+            </div>
+            <div class="final-score-item">
+              <span>PLAYER 2</span>
+              <span id="final-score-p2">0</span>
+            </div>
+          </div>
+
+          <div class="game-stats-detail">
+            <div class="stat-row">
+              <span>LONGEST RALLY</span>
+              <span id="stat-longest-rally">0</span>
+            </div>
+            <div class="stat-row">
+              <span>TOTAL TIME</span>
+              <span id="stat-total-time">00:00</span>
+            </div>
+            <div class="stat-row">
+              <span>POWERUPS COLLECTED</span>
+              <span id="stat-powerups">0</span>
+            </div>
+            <div class="stat-row">
+              <span>MAX BALL SPEED</span>
+              <span id="stat-max-speed">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-buttons">
+          <button id="play-again-btn" class="menu-button">
+            <i class="fas fa-redo"></i> PLAY AGAIN
+          </button>
+          <button id="change-mode-btn" class="menu-button">
+            <i class="fas fa-dice"></i> CHANGE MODE
+          </button>
+          <button id="main-menu-btn" class="menu-button">
+            <i class="fas fa-home"></i> MAIN MENU
+          </button>
+        </div>
+      </div>
+
+      <!-- Player Selection Screen -->
+      <div id="player-select" class="menu-screen">
+        <h2>SELECT PLAYERS</h2>
+        <div class="player-options">
+          <div class="player-selection">
+            <h3>PLAYER 1</h3>
+            <div class="player-type-buttons">
+              <button
+                class="player-type-btn active"
+                data-player="1"
+                data-type="human"
+              >
+                <i class="fas fa-user"></i> HUMAN
+              </button>
+              <button class="player-type-btn" data-player="1" data-type="ai">
+                <i class="fas fa-robot"></i> AI
+              </button>
+            </div>
+          </div>
+          <div class="player-selection">
+            <h3>PLAYER 2</h3>
+            <div class="player-type-buttons">
+              <button
+                class="player-type-btn active"
+                data-player="2"
+                data-type="human"
+              >
+                <i class="fas fa-user"></i> HUMAN
+              </button>
+              <button class="player-type-btn" data-player="2" data-type="ai">
+                <i class="fas fa-robot"></i> AI
+              </button>
+            </div>
+          </div>
+        </div>
+        <button id="start-game-btn" class="action-button">
+          START GAME <i class="fas fa-chevron-right"></i>
+        </button>
+        <button id="player-select-back" class="back-button">
+          <i class="fas fa-arrow-left"></i> BACK
+        </button>
+      </div>
+
+      <!-- Countdown Overlay -->
+      <div id="countdown-overlay" class="overlay">
+        <div id="countdown">3</div>
+      </div>
+
+      <!-- Special Effect Overlays -->
+      <div id="flash-overlay" class="overlay flash-overlay"></div>
+      <div
+        id="special-effect-overlay"
+        class="overlay special-effect-overlay"
+      ></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
